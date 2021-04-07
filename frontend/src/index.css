@@ -1,0 +1,113 @@
+:root {
+  --primary-color: rgb(5, 74, 202);
+  --secondary-color: rgb(51, 107, 211);
+}
+
+ul {
+  font-family: "Geogia", Arial, sans-serif;
+}
+
+nav {
+  background-color: rgb(1, 1, 95);
+  /* background-color: rgb(0, 0, 138); */
+  /* background-color: rgb(7, 151, 218); */
+  /* border-bottom: 4px solid rgb(151, 150, 150); */
+  box-shadow: 1px 1px 10px rgb(175, 175, 175);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: rgb(181, 246, 255);
+  font-family: "Georgia", Arial, sans-serif;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.24);
+  transition-duration: 0.3s;
+}
+
+.navbar-brand:hover {
+  /* color: rgb(0, 0, 255); */
+  text-shadow: 0 0 2px rgb(255, 222, 113);
+  transition-duration: 0.3s;
+}
+
+.nav-link {
+  font-size: 1rem;
+  border: 2px solid white;
+  background-color: var(--primary-color);
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.12), 0 5px 4px rgba(0, 0, 0, 0.24);
+  transition-duration: 0.3s;
+}
+
+.nav-link:hover {
+  background-color: var(--secondary-color);
+  transition-duration: 0.3s;
+}
+
+.main {
+  /* height: 85vh; */
+  padding-bottom: 1rem;
+}
+
+.card {
+  height: 400px;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.card:hover {
+  transition-duration: 0.3s;
+  background-color: var(--secondary-color);
+  /* background-color: grey; */
+  transform: scale3d(1.006, 1.006, 1);
+}
+
+.card-front {
+  font-family: "Lora", sans-serif;
+}
+
+.card-img-top {
+  height: 290px;
+  /* border-radius: 20px; */
+  /* border: 1px solid rgb(128, 127, 127); */
+  -webkit-filter: drop-shadow(5px 5px 5px #474747);
+  filter: drop-shadow(5px 5px 5px #474747);
+}
+
+.card-header {
+  display: flex;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+  padding: 1rem 0.5rem;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.row1 {
+  height: 4.6rem;
+}
+
+footer {
+  left: 0;
+  bottom: 0;
+  /* position: fixed; */
+  padding: 0.5rem;
+  background-color: rgb(57, 92, 187);
+}
+
+@media (max-width: 360px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+  .nav-link {
+    margin: 0px;
+  }
+
+  .card-header {
+    font-size: 0.9rem;
+  }
+}
