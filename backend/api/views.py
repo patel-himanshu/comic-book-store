@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 from .comicbooks import comicbooks
+from .models import ComicBook
+from .serializers import *
 
 # Create your views here.
 
@@ -25,16 +27,13 @@ def get_routes(request):
 
 @api_view(['GET'])
 def get_comicbooks(request):
-    return Response(comicbooks)
+    comicbooks = ComicBook.objects.all()
+    serializer = ComicBookSerializer(comicbooks, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET'])
 def get_comicbook(request, pk):
-    comicbook = None
-
-    for item in comicbooks:
-        if item['id'] == pk:
-            comicbook = item
-            break
-
-    return Response(comicbook)
+    comicbook = ComicBook.objects.get(id=pk)
+    serializer = ComicBookSerializer(comicbook, many=False)
+    return Response(serializer.data)
