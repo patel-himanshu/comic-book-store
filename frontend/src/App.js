@@ -1,4 +1,6 @@
 import { HashRouter, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
 import "./bootstrap.min.css";
 
 import Header from "./components/Header";
@@ -8,14 +10,16 @@ import ComicPage from "./pages/ComicPage";
 
 function App() {
   return (
-    <HashRouter>
-      <Header />
-      <div className="main container">
-        <Route exact path="/" component={HomePage} />
-        <Route path="/comic/:id" component={ComicPage} />
-      </div>
-      {/* <Footer /> */}
-    </HashRouter>
+    <Provider store={store}>
+      <HashRouter>
+        <Header />
+        <div className="main container">
+          <Route exact path="/" component={HomePage} />
+          <Route path="/comic/:id" component={ComicPage} />
+        </div>
+        {/* <Footer /> */}
+      </HashRouter>
+    </Provider>
   );
 }
 
