@@ -20,10 +20,10 @@ export default function ComicBook({ comicbook }) {
               <b>{comicbook.name}</b>
             </p>
             <p className="card-footer">
-              <b>{comicbook.price}</b> <br />
+              <b>₹ {comicbook.price}</b> <br />
               <Rating
                 value={comicbook.rating}
-                text={` ${comicbook.numReviews} reviews`}
+                text={` ${comicbook.num_reviews} reviews`}
                 classStyle=""
               />
             </p>

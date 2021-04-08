@@ -15,7 +15,7 @@ class ComicBook(models.Model):
     print_length = models.IntegerField(null=True, blank=True)
     price = models.DecimalField(
         max_digits=8, decimal_places=2, null=True, blank=True)
-    count_in_stock = models.IntegerField(null=True, blank=True, default=0)
+    stock = models.IntegerField(null=True, blank=True, default=0)
     rating = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True)
     num_reviews = models.IntegerField(null=True, blank=True, default=0)
