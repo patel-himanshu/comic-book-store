@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
@@ -8,7 +8,9 @@ export default function Header() {
   return (
     <nav className="navbar navbar-expand-sm sticky-top pb-2 mb-4">
       <div className="container-fluid">
-        <div className="navbar-brand">Comic Book Store</div>
+        <Link to="/">
+          <div className="navbar-brand">Comic Book Store</div>
+        </Link>
         <button
           className="navbar-toggler navbar-light"
           type="button"
@@ -25,16 +27,20 @@ export default function Header() {
           id="navbarMobile"
         >
           <ul className="navbar-nav nav-pills ml-auto">
-            <li className="nav-item text-right mt-1 mx-1">
-              <div className="nav-link px-2 text-right">
-                <i className="fa fa-shopping-cart"> Cart</i>
-              </div>
-            </li>
-            <li className="nav-item text-right mt-1 mx-1">
-              <div className="nav-link px-2 text-right">
-                <i className="fa fa-user"> Login</i>
-              </div>
-            </li>
+            <Link to="/cart">
+              <li className="nav-item text-right mt-1 mx-1">
+                <div className="nav-link px-2 text-right">
+                  <i className="fa fa-shopping-cart"> Cart</i>
+                </div>
+              </li>
+            </Link>
+            <Link to="/login">
+              <li className="nav-item text-right mt-1 mx-1">
+                <div className="nav-link px-2 text-right">
+                  <i className="fa fa-user"> Login</i>
+                </div>
+              </li>
+            </Link>
           </ul>
         </div>
       </div>

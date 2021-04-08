@@ -3,12 +3,17 @@
   --secondary-color: rgb(51, 107, 211);
 }
 
+h1 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
 ul {
   font-family: "Geogia", Arial, sans-serif;
 }
 
 nav {
-  background-color: rgb(1, 1, 95);
+  background-color: black;
+  /* background-color: rgb(1, 1, 95); */
   /* background-color: rgb(0, 0, 138); */
   /* background-color: rgb(7, 151, 218); */
   /* border-bottom: 4px solid rgb(151, 150, 150); */
@@ -17,7 +22,8 @@ nav {
 
 .navbar-brand {
   font-weight: bold;
-  color: rgb(181, 246, 255);
+  color: white;
+  /* color: rgb(181, 246, 255); */
   font-family: "Georgia", Arial, sans-serif;
   text-shadow: 0 4px 6px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.24);
   transition-duration: 0.3s;
@@ -48,8 +54,9 @@ nav {
 }
 
 .card {
-  height: 400px;
-  cursor: pointer;
+  height: 30rem;
+  /* height: 400px; */
+  /* cursor: pointer; */
   transition-duration: 0.3s;
 }
 
@@ -68,6 +75,7 @@ nav {
   height: 290px;
   /* border-radius: 20px; */
   /* border: 1px solid rgb(128, 127, 127); */
+  box-shadow: 0 0 10px #474747;
   -webkit-filter: drop-shadow(5px 5px 5px #474747);
   filter: drop-shadow(5px 5px 5px #474747);
 }
@@ -80,6 +88,11 @@ nav {
   align-items: center;
   justify-content: center;
   background: transparent;
+}
+
+.card-footer {
+  box-shadow: 0 0 10px inset #474747;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .row1 {

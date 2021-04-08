@@ -1,18 +1,21 @@
+import { HashRouter, Route } from "react-router-dom";
+import "./bootstrap.min.css";
+
 import Header from "./components/Header";
 // import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
-
-import "./bootstrap.min.css";
+import ComicPage from "./pages/ComicPage";
 
 function App() {
   return (
-    <>
+    <HashRouter>
       <Header />
       <div className="main container">
-        <HomePage />
+        <Route exact path="/" component={HomePage} />
+        <Route path="/comic/:id" component={ComicPage} />
       </div>
       {/* <Footer /> */}
-    </>
+    </HashRouter>
   );
 }
 
