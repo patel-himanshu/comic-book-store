@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+// import comicbooks from "../comicbooks";
 import ComicBook from "../components/ComicBook";
-import comicbooks from "../comicbooks";
 
 export default function HomePage() {
+  const [comicbooks, setComicbooks] = useState([]);
+
+  useEffect(() => {
+    async function getComicBooks() {
+      const response = await axios.get("/api/comicbooks/");
+      setComicbooks(response.data);
+    }
+
+    getComicBooks();
+  }, []);
+
   return (
     <>
       {/* <div className="row"> */}

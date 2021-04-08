@@ -1,11 +1,25 @@
-import React from "react";
-import comicbooks from "../comicbooks";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+// import comicbooks from "../comicbooks";
 import Rating from "../components/Rating";
 
 export default function ComicPage(props) {
-  const comic = comicbooks.find(
-    (comicbook) => comicbook.id === parseInt(props.match.params.id)
-  );
+  // const comic = comicbooks.find(
+  //   (comicbook) => comicbook.id === props.match.params.id
+  // );
+  const [comic, setComic] = useState([]);
+
+  useEffect(() => {
+    async function getComic() {
+      const response = await axios.get(
+        `/api/comicbooks/${props.match.params.id}`
+      );
+      setComic(response.data);
+    }
+
+    getComic();
+  }, []);
 
   return (
     <div>
