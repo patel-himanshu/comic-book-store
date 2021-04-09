@@ -7,6 +7,7 @@ import Header from "./components/Header";
 // import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ComicPage from "./pages/ComicPage";
+import CartPage from "./pages/CartPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <div className="main container">
           <Route exact path="/" component={HomePage} />
           <Route path="/comic/:id" component={ComicPage} />
+          <Route path="/cart/:id?" component={CartPage} />
         </div>
         {/* <Footer /> */}
       </HashRouter>

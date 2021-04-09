@@ -6,17 +6,17 @@ export default function Header() {
   const navCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
   return (
-    <nav className="navbar navbar-expand-sm sticky-top pb-2 mb-4">
+    <nav className="navbar navbar-expand-sm navbar-dark sticky-top pb-2 mb-4">
       <div className="container-fluid">
         <Link to="/">
           <div className="navbar-brand">Comic Book Store</div>
         </Link>
         <button
-          className="navbar-toggler navbar-light"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarMobile"
-          style={{ border: "1px solid black" }}
+          // style={{ border: "1px solid grey" }}
           onClick={navCollapse}
         >
           <span className="navbar-toggler-icon"></span>

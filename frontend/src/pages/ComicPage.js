@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // import comicbooks from "../comicbooks";
@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import Rating from "../components/Rating";
 
 export default function ComicPage(props) {
+  const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
   const comicbookItem = useSelector((state) => state.comicbookItem);
   const { comicbook: comic, loading, error } = comicbookItem;
@@ -14,6 +15,10 @@ export default function ComicPage(props) {
   useEffect(() => {
     dispatch(comicbookItemAction(props.match.params.id));
   }, [dispatch, props]);
+
+  const handleAddToCart = () => {
+    props.history.push(`/cart/${props.match.params.id}?quantity=${quantity}`);
+  };
 
   return (
     <>
@@ -59,18 +64,50 @@ export default function ComicPage(props) {
             <div className="col-md-3 my-1">
               <ul className="list-group list-group-flush text-center">
                 <li className="list-group-item">
-                  <b>Status</b>: {comic.stock > 0 ? "In Stock" : "Out of Stock"}
+                  <div className="row">
+                    <div className="col text-left">
+                      <b>Status</b>:
+                    </div>
+                    <div className="col text-right">
+                      {comic.stock > 0 ? "In Stock" : "Out of Stock"}
+                    </div>
+                  </div>
                 </li>
+                {comic.stock > 0 && (
+                  <li className="list-group-item">
+                    <div className="row">
+                      <div className="col text-left">
+                        <b>Quantity</b>:
+                      </div>
+                      <div className="col text-right">
+                        <select
+                          className="form-control"
+                          value={quantity}
+                          onChange={(e) => setQuantity(e.target.value)}
+                        >
+                          {[...Array(comic.stock).keys()].map((elem) => (
+                            <option key={elem + 1} value={elem + 1}>
+                              {elem + 1}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                  </li>
+                )}
                 <li className="list-group-item">
-                  <b>Quantity</b>: 0
-                </li>
-                <li className="list-group-item">
-                  <b>Total Price</b>: {comic.price}
+                  <div className="row">
+                    <div className="col text-left">
+                      <b>Total Price</b>:
+                    </div>
+                    <div className="col text-right">₹ {comic.price}</div>
+                  </div>
                 </li>
                 <li className="list-group-item">
                   <button
                     className="btn btn-primary"
                     disabled={comic.stock === 0}
+                    onClick={handleAddToCart}
                   >
                     Add to Cart
                   </button>

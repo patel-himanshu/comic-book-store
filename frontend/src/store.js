@@ -4,13 +4,19 @@ import {
   comicbookListReducers,
   comicbookItemReducers,
 } from "./reducers/comicbookReducers";
+import { cartReducer } from "./reducers/cartReducers";
 
 const reducer = combineReducers({
   comicbookList: comicbookListReducers,
   comicbookItem: comicbookItemReducers,
+  cart: cartReducer,
 });
 
-const initialState = {};
+const cartItemFromLocalStorage = localStorage.getItem("cartItems")
+  ? JSON.parse(localStorage.getItem("cartItems"))
+  : [];
+
+const initialState = { cart: { cartItems: cartItemFromLocalStorage } };
 const middleware = [thunk];
 
 const store = createStore(
