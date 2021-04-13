@@ -5,18 +5,27 @@ import {
   comicbookItemReducers,
 } from "./reducers/comicbookReducers";
 import { cartReducer } from "./reducers/cartReducers";
+import { userLoginLogoutReducers } from "./reducers/userReducers";
 
 const reducer = combineReducers({
   comicbookList: comicbookListReducers,
   comicbookItem: comicbookItemReducers,
   cart: cartReducer,
+  userLogin: userLoginLogoutReducers,
 });
 
 const cartItemFromLocalStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
 
-const initialState = { cart: { cartItems: cartItemFromLocalStorage } };
+const userInfoFromLocalStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
+
+const initialState = {
+  cart: { cartItems: cartItemFromLocalStorage },
+  userLogin: { userInfo: userInfoFromLocalStorage },
+};
 const middleware = [thunk];
 
 const store = createStore(

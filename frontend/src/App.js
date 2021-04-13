@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import ComicPage from "./pages/ComicPage";
 import CartPage from "./pages/CartPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route path="/comic/:id" component={ComicPage} />
           <Route path="/cart/:id?" component={CartPage} />
+          <Route path="/login" component={LoginPage} />
         </div>
         {/* <Footer /> */}
       </HashRouter>
