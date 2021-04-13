@@ -5,13 +5,21 @@ import {
   comicbookItemReducers,
 } from "./reducers/comicbookReducers";
 import { cartReducer } from "./reducers/cartReducers";
-import { userLoginLogoutReducers } from "./reducers/userReducers";
+import {
+  userLoginLogoutReducers,
+  userRegisterReducers,
+  userProfileDetailsReducers,
+  userProfileUpdateReducers,
+} from "./reducers/userReducers";
 
 const reducer = combineReducers({
   comicbookList: comicbookListReducers,
   comicbookItem: comicbookItemReducers,
   cart: cartReducer,
   userLogin: userLoginLogoutReducers,
+  userRegister: userRegisterReducers,
+  userProfileDetails: userProfileDetailsReducers,
+  userProfileUpdate: userProfileUpdateReducers,
 });
 
 const cartItemFromLocalStorage = localStorage.getItem("cartItems")

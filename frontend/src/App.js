@@ -9,6 +9,8 @@ import HomePage from "./pages/HomePage";
 import ComicPage from "./pages/ComicPage";
 import CartPage from "./pages/CartPage";
 import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path="/comic/:id" component={ComicPage} />
           <Route path="/cart/:id?" component={CartPage} />
           <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
+          <Route path="/profile" component={ProfilePage} />
         </div>
         {/* <Footer /> */}
       </HashRouter>
