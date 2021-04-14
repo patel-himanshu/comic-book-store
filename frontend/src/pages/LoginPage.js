@@ -62,7 +62,7 @@ export default function LoginPage({ location, history }) {
           </div>
 
           <div className="d-flex justify-content-center">
-            <button className="btn-primary" type="submit">
+            <button className="btn-primary btn-lg" type="submit">
               Sign In
             </button>
           </div>

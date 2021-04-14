@@ -11,6 +11,7 @@ export default function ProfilePage({ history }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
+
   const dispatch = useDispatch();
 
   const userProfileDetails = useSelector((state) => state.userProfileDetails);
@@ -23,7 +24,7 @@ export default function ProfilePage({ history }) {
   const { success } = userProfileUpdate;
 
   useEffect(() => {
-    if (!user) {
+    if (!userInfo) {
       history.push("/login");
     } else {
       if (!user || !user.name || success) {
@@ -38,6 +39,7 @@ export default function ProfilePage({ history }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
     if (password !== confirmPassword) {
       setMessage("Passwords do not match");
     } else {
@@ -116,7 +118,7 @@ export default function ProfilePage({ history }) {
           </div>
 
           <div className="d-flex justify-content-center">
-            <button className="btn-primary" type="submit">
+            <button className="btn-primary btn-lg" type="submit">
               Update
             </button>
           </div>
