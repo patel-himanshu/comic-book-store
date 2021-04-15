@@ -9,8 +9,8 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from .comicbooks import comicbooks
-from .models import ComicBook
+# from .comicbooks import comicbooks
+from .models import *
 from .serializers import *
 
 # Create your views here.
@@ -79,6 +79,50 @@ def get_comicbook(request, pk):
     comicbook = ComicBook.objects.get(id=pk)
     serializer = ComicBookSerializer(comicbook, many=False)
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def add_order_items(request):
+    user = request.user
+    data = request.data
+    order_items = data['orderItems']
+
+    if order_items and len(order_items) == 0:
+        return Response({'detail': "No Order Items"}, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        order = Order.objects.create(
+            user=user,
+            payment_mode=data['paymentMode'],
+            tax_price=data['taxPrice'],
+            shipping_price=data['shippingPrice'],
+            total_price=data['totalPrice']
+        )
+
+        shipping = ShippingAddress.objects.create(
+            order=order,
+            address=data['shippingAddress']['address'],
+            city=data['shippingAddress']['city'],
+            country=data['shippingAddress']['country'],
+            pin_code=data['shippingAddress']['pinCode'],
+        )
+
+        for i in order_items:
+            comicbook = ComicBook.object.get(id=i['comicbook'])
+            item = OrderItem.objects.create(
+                comicbook=comicbook,
+                order=order,
+                name=comicbook.name,
+                quantity=i['quantity'],
+                price=i['price'],
+                image=comicbook.image.url,
+            )
+
+            comicbook.stock -= item.quantity
+            comicbook.save()
+
+        serializer = OrderSerializer(order, many=False)
+        return Response(serializer.data)
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):

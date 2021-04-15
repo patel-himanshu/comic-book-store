@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CheckoutProgress from "../components/CheckoutProgress";
+import createOrder from "../actions/orderActions";
+import { ORDER_CREATE_RESET } from "../actions/types";
 
-export default function PlaceOrderPage() {
+export default function PlaceOrderPage({ history }) {
+  const dispatch = useDispatch();
+
+  const orderCreate = useSelector((state) => state.orderCreate);
+  const { order, success, error } = orderCreate;
+
   const cart = useSelector((state) => state.cart);
   const { cartItems, shippingAddress } = cart;
 
@@ -18,7 +25,30 @@ export default function PlaceOrderPage() {
     Number(shippingPrice)
   ).toFixed(2);
 
-  const onPlaceOrder = () => {};
+  if (!cart.paymentMode) {
+    history.push("/payment");
+  }
+
+  useEffect(() => {
+    if (success) {
+      history.push(`/order/${order.id}`);
+      dispatch({ type: ORDER_CREATE_RESET });
+    }
+  }, [success, history, dispatch, order.id]);
+
+  const onPlaceOrder = () => {
+    dispatch(
+      createOrder({
+        orderItems: cartItems,
+        shippingAddress: shippingAddress,
+        paymentMode: cart.paymentMode,
+        itemsPrice: cart.itemsPrice,
+        shippingPrice: cart.shippingPrice,
+        taxPrice: cart.taxPrice,
+        totalPrice: cart.totalPrice,
+      })
+    );
+  };
 
   return (
     <div>
@@ -103,6 +133,11 @@ export default function PlaceOrderPage() {
                 <div className="col text-right">₹ {totalPrice}</div>
               </h4>
             </li>
+            {error && (
+              <div className="row">
+                <h4 className="col text-danger">{error}</h4>
+              </div>
+            )}
             <li className="list-group-item text-center">
               <button
                 className="btn btn-success"
