@@ -9,7 +9,7 @@ export default function Rating({ value, text, classStyle }) {
             ? "fa fa-star"
             : value >= 0.5
             ? "fa fa-star-half-o"
-            : "fa fa-star"
+            : "fa fa-star-o"
         }
         style={{ color: "yellow" }}
       ></i>
@@ -19,7 +19,7 @@ export default function Rating({ value, text, classStyle }) {
             ? "fa fa-star"
             : value >= 1.5
             ? "fa fa-star-half-o"
-            : "fa fa-star"
+            : "fa fa-star-o"
         }
         style={{ color: "yellow" }}
       ></i>
@@ -29,7 +29,7 @@ export default function Rating({ value, text, classStyle }) {
             ? "fa fa-star"
             : value >= 2.5
             ? "fa fa-star-half-o"
-            : "fa fa-star"
+            : "fa fa-star-o"
         }
         style={{ color: "yellow" }}
       ></i>
@@ -39,7 +39,7 @@ export default function Rating({ value, text, classStyle }) {
             ? "fa fa-star"
             : value >= 3.5
             ? "fa fa-star-half-o"
-            : "fa fa-star"
+            : "fa fa-star-o"
         }
         style={{ color: "yellow" }}
       ></i>
@@ -49,7 +49,7 @@ export default function Rating({ value, text, classStyle }) {
             ? "fa fa-star"
             : value >= 4.5
             ? "fa fa-star-half-o"
-            : "fa fa-star"
+            : "fa fa-star-o"
         }
         style={{ color: "yellow" }}
       ></i>
