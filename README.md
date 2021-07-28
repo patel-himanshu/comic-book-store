@@ -2,10 +2,11 @@
 
 ### Technology Used
 
-1. Django 3.2
 1. React 17.0.2
 1. Redux 4.0.5
+1. Django 3.2
 1. Django REST Framework 3.12.4
+1. Bootstrap 4.6.0
 
 
 ### Steps to Run the Project
